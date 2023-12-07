@@ -10,27 +10,46 @@ import {
   faFileLines,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const pathName = useLocation().pathname;
   return (
     <div className="bg-white min-h-full">
       <TopMenu />
       <div className="mt-10 text-lg">
         <div className="flex items-center justify-between pr-10 md:pr-16">
-          <div className="flex items-center text-text-gray-700">
+          <div
+            className={`flex items-center text-gray-500 font-extralight ${
+              pathName === "/" && "text-text-gray-700 font-normal"
+            }`}
+          >
             <FontAwesomeIcon icon={faHouse} />
-            <p className="mr-3">صفحه اصلی</p>
+            <Link to="/" className="mr-3">
+              صفحه اصلی
+            </Link>
           </div>
-          <div className="h-10 w-1 bg-gold-400 rounded-md"></div>
+          {pathName === "/" && (
+            <div className="h-10 w-1 bg-gold-400 rounded-md"></div>
+          )}
         </div>
 
         {/* SERVICES */}
         <p className="text-sm text-gray-300 pr-10 md:pr-16 mt-7">سرویس‌ها</p>
         <div className="flex items-center justify-between pr-10 md:pr-16">
-          <div className="mt-2 flex items-center text-gray-500 font-extralight">
+          <div
+            className={`mt-2 flex items-center text-gray-500 font-extralight ${
+              pathName === "/packages" && "text-text-gray-700 font-normal"
+            }`}
+          >
             <FontAwesomeIcon icon={faChartPie} />
-            <p className="mr-3">اینترنت</p>
+            <Link to={"/packages"} className="mr-3">
+              اینترنت
+            </Link>
           </div>
+          {pathName === "/packages" && (
+            <div className="h-10 w-1 bg-gold-400 rounded-md"></div>
+          )}
         </div>
 
         <div className="flex items-center justify-between pr-10 md:pr-16">
