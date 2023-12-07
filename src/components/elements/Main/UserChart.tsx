@@ -9,7 +9,7 @@ const UserChart = () => {
       {
         data: [500, 1000, 2200, 2500, 1700],
         fill: true,
-        backgroundColor: "#fffcef",
+        backgroundColor: "#feeeb7",
         borderColor: "#fdc816",
         tension: 0.45,
         borderWidth: 4,
