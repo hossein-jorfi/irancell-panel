@@ -1,44 +1,86 @@
-import { faMagnifyingGlass, faHouse } from "@fortawesome/free-solid-svg-icons";
+import TopMenu from "../elements/SideBar/TopMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faChartPie,
+  faChartColumn,
+  faBell,
+  faList,
+  faChartLine,
+  faFileLines,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
   return (
     <div className="bg-white min-h-full">
-      <div className="flex flex-col items-center py-5 px-10">
-        {/* Top */}
-        <div className="flex items-center flex-row-reverse space-x-2">
-          <div className="text-xl font-bold bg-gold-400 p-1.5 rounded-2xl">
-            ایرانسل من
-          </div>
-          <div className="w-10 h-10 border-2 rounded-full"></div>
-        </div>
-        {/* Top */}
-
-        {/* Search */}
-        <div className="mt-14 relative w-full">
-          <input
-            type="text"
-            placeholder="جستوجو"
-            className="placeholder-gray-300 w-full text-gray-500 border-2 p-4 rounded-xl outline-none focus:border-gray-400"
-          />
-          <FontAwesomeIcon
-            icon={faMagnifyingGlass}
-            className="absolute text-gray-300 left-3 top-[22px]"
-          />
-        </div>
-        {/* Search */}
-      </div>
-      {/* Items */}
+      <TopMenu />
       <div className="mt-10 text-lg">
-        <div className="flex items-center justify-between border pr-10 md:pr-16">
-          <div className="flex">
+        <div className="flex items-center justify-between pr-10 md:pr-16">
+          <div className="flex items-center text-text-gray-700">
             <FontAwesomeIcon icon={faHouse} />
-            <p>صفحه اصلی</p>
+            <p className="mr-3">صفحه اصلی</p>
           </div>
           <div className="h-10 w-1 bg-gold-400 rounded-md"></div>
         </div>
+
+        {/* SERVICES */}
+        <p className="text-sm text-gray-300 pr-10 md:pr-16 mt-7">سرویس‌ها</p>
+        <div className="flex items-center justify-between pr-10 md:pr-16">
+          <div className="mt-2 flex items-center text-gray-500 font-extralight">
+            <FontAwesomeIcon icon={faChartPie} />
+            <p className="mr-3">اینترنت</p>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pr-10 md:pr-16">
+          <div className="mt-2 flex items-center text-gray-500 font-extralight">
+            <FontAwesomeIcon icon={faChartColumn} />
+            <p className="mr-3">کارکرد و فروش</p>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pr-10 md:pr-16">
+          <div className="mt-2 flex items-center text-gray-500 font-extralight">
+            <FontAwesomeIcon icon={faBell} />
+            <p className="mr-3">خدمات</p>
+          </div>
+        </div>
+        {/* SERVICES */}
+
+        {/* MANAGE */}
+        <p className="text-sm text-gray-300 pr-10 md:pr-16 mt-7">مدیریت</p>
+        <div className="flex items-center justify-between pr-10 md:pr-16">
+          <div className="mt-2 flex items-center text-gray-500 font-extralight">
+            <FontAwesomeIcon icon={faList} />
+            <p className="mr-3">مدیریت خدمات</p>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pr-10 md:pr-16">
+          <div className="mt-2 flex items-center text-gray-500 font-extralight">
+            <FontAwesomeIcon icon={faChartLine} />
+            <p className="mr-3">مدیریت سیمکارت</p>
+          </div>
+        </div>
+        {/* MANAGE */}
+
+        {/* BOTTOM */}
+        <div className="flex items-center justify-between pr-10 md:pr-16 mt-7">
+          <div className="mt-2 flex items-center text-gray-500 font-extralight">
+            <FontAwesomeIcon icon={faFileLines} />
+            <p className="mr-3">سوالات متداول</p>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pr-10 md:pr-16">
+          <div className="mt-2 flex items-center text-gray-500 font-extralight">
+            <FontAwesomeIcon icon={faLocationDot} />
+            <p className="mr-3">ارتباط با ما</p>
+          </div>
+        </div>
+        {/* BOTTOM */}
       </div>
-      {/* Items */}
     </div>
   );
 };
