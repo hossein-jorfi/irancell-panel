@@ -44,7 +44,7 @@ const Sidebar = () => {
           >
             <FontAwesomeIcon icon={faChartPie} />
             <Link to={"/packages"} className="mr-3">
-              اینترنت
+              بسته های فعال
             </Link>
           </div>
           {pathName === "/packages" && (
