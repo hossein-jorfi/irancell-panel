@@ -5,12 +5,12 @@ type users = {
   users: any[];
 };
 type Action = {
-  fetchData: (url: string) => void;
+  fetchData: () => void;
 };
 const usersStore = (set) => ({
   users: [],
-  fetchData: async (url) => {
-    const response = await fetch(url);
+  fetchData: async () => {
+    const response = await fetch("http://localhost:3000/api/users");
     set({
       users: await response.json(),
     });
@@ -18,24 +18,27 @@ const usersStore = (set) => ({
 });
 const useUsersStore = create<users & Action>()(usersStore);
 
-type dataTodos = {
-  todos: any[];
+type user = {
+  user: any;
 };
-type dataAction = {
-  fetchData: (url: string) => void;
+type userAction = {
+  fetchUser: (token) => void;
 };
-const dataStore = (set) => ({
-  todos: [],
-  fetchData: async (url) => {
-    const response = await fetch(url);
+const userStore = (set) => ({
+  user: null,
+  fetchUser: async (token) => {
+    const response = await fetch("http://localhost:3000/api/user", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `${token}`,
+      },
+    });
     set({
-      todos: await response.json(),
+      user: await response.json(),
     });
   },
 });
+const useUserStore = create<user & userAction>()(userStore);
 
-const useDataStore = create<dataTodos & dataAction>()(
-  devtools(persist(dataStore, { name: "data" }))
-);
-
-export { useUsersStore };
+export default useUserStore;
