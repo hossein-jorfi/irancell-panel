@@ -2,7 +2,7 @@ import { Route, Routes, useParams } from "react-router-dom";
 import MainLeft from "./Main/MainLeft";
 import MainRight from "./Main/MainRight";
 import Packages from "./Main/Packages";
-import useUserStore from "../../store";
+import { useUserStore } from "../../store";
 import { useEffect } from "react";
 
 const Main = () => {
@@ -11,9 +11,10 @@ const Main = () => {
   useEffect(() => {
     fetchUser("token1");
   }, []);
-  console.log(user)
-  const params = useParams();
-  console.log(params);
+  console.log(user);
+
+  const params = useParams()
+  console.log(params)
 
   return (
     <div className="flex flex-col lg:flex-row w-full min-h-screen">

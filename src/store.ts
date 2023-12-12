@@ -41,4 +41,4 @@ const userStore = (set) => ({
 });
 const useUserStore = create<user & userAction>()(userStore);
 
-export default useUserStore;
+export { useUserStore, useUsersStore };
