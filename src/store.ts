@@ -1,22 +1,22 @@
-import state from "sweetalert/typings/modules/state";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-type course = { name: string; price: number };
-type State = {
-  courses: course[];
+type users = {
+  users: any[];
 };
 type Action = {
-  addCourse: (course: course) => void;
+  fetchData: (url: string) => void;
 };
-const myStore = (set) => ({
-  courses: [],
-  addCourse: (course) => {
-    set((state) => ({
-      courses: [...state.courses, course],
-    }));
+const usersStore = (set) => ({
+  users: [],
+  fetchData: async (url) => {
+    const response = await fetch(url);
+    set({
+      users: await response.json(),
+    });
   },
 });
+const useUsersStore = create<users & Action>()(usersStore);
 
 type dataTodos = {
   todos: any[];
@@ -38,12 +38,4 @@ const useDataStore = create<dataTodos & dataAction>()(
   devtools(persist(dataStore, { name: "data" }))
 );
 
-const useMyStore = create<State & Action>()(
-  devtools(
-    persist(myStore, {
-      name: "courses",
-    })
-  )
-);
-
-export default useDataStore;
+export { useUsersStore };
